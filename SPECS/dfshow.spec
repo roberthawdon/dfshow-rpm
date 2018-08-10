@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.3.2
+%define         _verstr      0.3.5
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -48,16 +48,19 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %attr(755, root, root) %{_bindir}/show
-%attr(644, root, root) /usr/include/colors.h
-%attr(644, root, root) /usr/include/functions.h
-%attr(644, root, root) /usr/include/main.h
-%attr(644, root, root) /usr/include/menus.h
-%attr(644, root, root) /usr/include/views.h
+%attr(644, root, root) /usr/include/%{name}/colors.h
+%attr(644, root, root) /usr/include/%{name}/functions.h
+%attr(644, root, root) /usr/include/%{name}/main.h
+%attr(644, root, root) /usr/include/%{name}/menus.h
+%attr(644, root, root) /usr/include/%{name}/views.h
 %attr(644, root, root) /usr/share/man/man1/show.1.gz
 
 %doc
 
 %changelog
+
+* Fri Aug 10 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Updated for 0.3.5
 
 * Fri Aug 10 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Initial 0.3.2 Version
