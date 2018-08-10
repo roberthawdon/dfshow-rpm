@@ -3,14 +3,20 @@
 %else
 %define         _verstr      0.3.2
 %endif
-
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
+%else
+%define         _versfx      -alpha
+%endif
+%if 0%{?_release:1}
+%define         _rel      %{_release}
+%else
+%define         _rel      1
 %endif
 
 Name:           dfshow
 Version:        %{_verstr}
-Release:        1%{?dist}
+Release:        %{_rel}%{?dist}
 Summary:        An interactive directory/file browser written for Unix-like systems.
 
 Group:          Utilities
