@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.3.5
+%define         _verstr      0.3.6
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -58,6 +58,11 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+
+* Thu Aug 16 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Reordering keeps the highlighted file focused
+- Resolved trailing slash navigational issues #33
+- Bugfixes
 
 * Fri Aug 10 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Updated for 0.3.5
