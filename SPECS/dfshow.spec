@@ -22,7 +22,7 @@ Summary:        An interactive directory/file browser written for Unix-like syst
 Group:          Utilities
 License:        GPLv3
 URL:            https://github.com/roberthawdon/dfshow
-Source:         https://github.com/roberthawdon/%{version}/archive/v%{version}%{_versfx}.tar.gz
+Source:         https://github.com/roberthawdon/%{name}/archive/v%{version}%{_versfx}.tar.gz
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:  ncurses-devel autoconf automake
 
