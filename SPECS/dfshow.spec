@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.4.0
+%define         _verstr      0.4.1
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -63,6 +63,11 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+
+* Thu Nov 1 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fix memory leak issue when browsing directories in SHOW
+- Able to show dead symlinks
+- Able to show the permission status for symlink targets in --color mode
 
 * Fri Oct 12 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Introducing sf, a simple text file viewer to replace the PAGER variable requirement.
