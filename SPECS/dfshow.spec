@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.4.1
+%define         _verstr      0.4.2
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -57,12 +57,18 @@ rm -rf %{buildroot}
 %attr(644, root, root) /usr/include/%{name}/show.h
 %attr(644, root, root) /usr/include/%{name}/showfunctions.h
 %attr(644, root, root) /usr/include/%{name}/showmenus.h
-%attr(644, root, root) /usr/share/man/man1/show.1.gz
-%attr(644, root, root) /usr/share/man/man1/sf.1.gz
+%attr(644, root, root) /usr/share/man/man1/show.*
+%attr(644, root, root) /usr/share/man/man1/sf.*
 
 %doc
 
 %changelog
+
+* Thu Nov 15 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fixes function bar corruption due to incorrect display of -> in symlinks
+- Adds DFS_THEME environment variable to allow themes to be consistent between applications
+- Massively improved the efficiency of large sized file browsing in sf
+- Fixed navigation issue in sf when using the position command beyond the end of file.
 
 * Thu Nov 1 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fix memory leak issue when browsing directories in SHOW
