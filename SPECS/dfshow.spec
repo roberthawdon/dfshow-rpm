@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.4.2
+%define         _verstr      0.4.3
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -63,6 +63,9 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+
+* Wed Nov 21 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Improves UTF-8 support throughout the applications.
 
 * Thu Nov 15 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fixes function bar corruption due to incorrect display of -> in symlinks
