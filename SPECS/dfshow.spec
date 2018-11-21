@@ -11,7 +11,7 @@
 %if 0%{?_release:1}
 %define         _rel      %{_release}
 %else
-%define         _rel      1
+%define         _rel      2
 %endif
 
 Name:           dfshow
@@ -25,6 +25,10 @@ URL:            https://github.com/roberthawdon/dfshow
 Source:         https://github.com/roberthawdon/%{name}/archive/v%{version}%{_versfx}.tar.gz
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:  ncurses-devel autoconf automake
+
+%if 0%{?mageia}
+BuildRequires:  libncursesw-devel
+%endif
 
 %description
 DF-SHOW (Directory File Show) is a Unix-like rewrite of some of the applications from Larry Kroeker's DF-EDIT (Directory File Editor) for MS-DOS and PC-DOS systems, based on the Version 2.3d release from 1986.
