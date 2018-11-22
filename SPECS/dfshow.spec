@@ -11,7 +11,7 @@
 %if 0%{?_release:1}
 %define         _rel      %{_release}
 %else
-%define         _rel      1
+%define         _rel      2
 %endif
 
 Name:           dfshow
@@ -24,7 +24,7 @@ License:        GPLv3
 URL:            https://github.com/roberthawdon/dfshow
 Source:         https://github.com/roberthawdon/%{name}/archive/v%{version}%{_versfx}.tar.gz
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-BuildRequires:  ncurses-devel autoconf automake
+BuildRequires:  ncurses-devel autoconf automake gcc
 
 %if 0%{?mageia}
 BuildRequires:  libncursesw-devel
