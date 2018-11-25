@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.4.4
+%define         _verstr      0.4.5
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -11,7 +11,7 @@
 %if 0%{?_release:1}
 %define         _rel      %{_release}
 %else
-%define         _rel      2
+%define         _rel      1
 %endif
 
 Name:           dfshow
@@ -67,6 +67,10 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+
+* Sun Nov 25 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fix input boxes entering junk when using unused navigation keys.
+- Fix sf taking the user back to the start of the file if aborting the Position command or entering a null value.
 
 * Thu Nov 22 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fix crash when navigating files in `sf` on FreeBSD and macOS.
