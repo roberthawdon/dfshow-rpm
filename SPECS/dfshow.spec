@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.4.5
+%define         _verstr      0.4.6
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -67,6 +67,9 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+
+* Thu Nov 29 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fix spacing when using UTF-8 characters in dates.
 
 * Sun Nov 25 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fix input boxes entering junk when using unused navigation keys.
