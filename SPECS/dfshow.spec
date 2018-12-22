@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.4.6
+%define         _verstr      0.5.0
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -23,8 +23,9 @@ Group:          Utilities
 License:        GPLv3
 URL:            https://github.com/roberthawdon/dfshow
 Source:         https://github.com/roberthawdon/%{name}/archive/v%{version}%{_versfx}.tar.gz
+Requires:       libconfig
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-BuildRequires:  ncurses-devel autoconf automake gcc
+BuildRequires:  ncurses-devel libconfig-devel autoconf automake gcc
 
 %if 0%{?mageia}
 BuildRequires:  libncursesw-devel
@@ -40,7 +41,7 @@ The show application lets users view the names of files and directories on a dis
 ./bootstrap
 
 %build
-./configure --prefix=/usr
+./configure --prefix=/usr --sysconfdir=/etc --datadir=/usr/share
 make
 
 %install
@@ -52,6 +53,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+%config(noreplace) /etc/dfshow.conf
 %attr(755, root, root) %{_bindir}/show
 %attr(755, root, root) %{_bindir}/sf
 %attr(644, root, root) /usr/include/%{name}/colors.h
@@ -63,10 +65,19 @@ rm -rf %{buildroot}
 %attr(644, root, root) /usr/include/%{name}/showmenus.h
 %attr(644, root, root) /usr/share/man/man1/show.*
 %attr(644, root, root) /usr/share/man/man1/sf.*
+%attr(644, root, root) /usr/share/dfshow
 
 %doc
 
 %changelog
+
+* Sat Dec 22 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Early theme builder.
+- Ability to save and load themes within show.
+- Support for configuration files.
+- Support for default terminal colors.
+- Improved support for 8 color terminals.
+- Navigation improvements when deleting or renaming files.
 
 * Thu Nov 29 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fix spacing when using UTF-8 characters in dates.
