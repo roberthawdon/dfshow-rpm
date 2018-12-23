@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.5.0
+%define         _verstr      0.5.1
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -70,6 +70,10 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+
+* Sun Dec 23 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Removed non-functional --monochrome command line argument.
+- Added ReadTheDocs documentation. 
 
 * Sat Dec 22 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Early theme builder.
