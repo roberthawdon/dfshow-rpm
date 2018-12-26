@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.5.1
+%define         _verstr      0.5.2
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -56,13 +56,6 @@ rm -rf %{buildroot}
 %config(noreplace) /etc/dfshow.conf
 %attr(755, root, root) %{_bindir}/show
 %attr(755, root, root) %{_bindir}/sf
-%attr(644, root, root) /usr/include/%{name}/colors.h
-%attr(644, root, root) /usr/include/%{name}/common.h
-%attr(644, root, root) /usr/include/%{name}/sf.h
-%attr(644, root, root) /usr/include/%{name}/sfmenus.h
-%attr(644, root, root) /usr/include/%{name}/show.h
-%attr(644, root, root) /usr/include/%{name}/showfunctions.h
-%attr(644, root, root) /usr/include/%{name}/showmenus.h
 %attr(644, root, root) /usr/share/man/man1/show.*
 %attr(644, root, root) /usr/share/man/man1/sf.*
 %attr(644, root, root) /usr/share/dfshow
@@ -70,6 +63,11 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+
+* Wed Dec 26 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Added --show-on-enter option for show as both a command line option and a config option
+- Install will no longer install header files
+- Various bug fixes
 
 * Sun Dec 23 2018 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Removed non-functional --monochrome command line argument.
