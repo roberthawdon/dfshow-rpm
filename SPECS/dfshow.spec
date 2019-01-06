@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.5.4
+%define         _verstr      0.5.5
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -64,6 +64,9 @@ rm -rf %{buildroot}
 
 %changelog
 
+* Sun Jan 6 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Prevents applications quitting when CTRL-C is called by default
+- Fixes a bug which allowed sf to treat directories as files.
 
 * Fri Jan 4 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fixed issue where occasionally toggling hidden files would push the cursor and selected file off the bottom of the screen.
