@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.5.5
+%define         _verstr      0.6.0
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -63,6 +63,15 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Sat Feb 16 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Added ability to create Symbolic and Hard links
+- Added ability to update timestamps of files (touch)
+- Added ability to create new files (touch file)
+- Added --full-time argument to show
+- Rebuilt menu system which automatically adjusts to window size by cleanly removing items if the window is too small.
+- Fixed bug that would crash show on window resize
+- Fixed bug that would crash show if a single file was copied to a non-existent location
+- Fixed ESC on modify menus from removing all permissions
 
 * Sun Jan 6 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Prevents applications quitting when CTRL-C is called by default
