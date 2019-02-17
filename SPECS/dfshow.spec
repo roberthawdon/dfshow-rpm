@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.6.0
+%define         _verstr      0.6.1
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -63,6 +63,10 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Sun Feb 17 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fix intermittent segfault in macOS when creating Symlinks with a relative path
+- General memory improvements
+
 * Sat Feb 16 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Added ability to create Symbolic and Hard links
 - Added ability to update timestamps of files (touch)
