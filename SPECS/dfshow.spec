@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.6.2
+%define         _verstr      0.6.3
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -63,6 +63,11 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Tue Mar 12 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Added missing documentation.
+- Adds ability to use Home and End keys on text inputs.
+- Adds mitigation for Google Drive Stream crashing show on macOS.
+
 * Sun Mar 02 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Added ability to create parent directories if they don't exist.
 - Added ability to delete empty directories.
