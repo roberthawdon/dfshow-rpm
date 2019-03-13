@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.6.3
+%define         _verstr      0.6.4
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -63,6 +63,9 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Wed Mar 13 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fixed occasional buffer overflow when accessing /dev.
+
 * Tue Mar 12 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Added missing documentation.
 - Adds ability to use Home and End keys on text inputs.
