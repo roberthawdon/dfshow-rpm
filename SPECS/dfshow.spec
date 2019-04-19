@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.6.4
+%define         _verstr      0.7.0
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -63,6 +63,16 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Wed Apr 19 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Added configuration menus in show and sf.
+- Added ability to set default theme.
+- Added the remainder of the color options to the color menu.
+- Improved file wildcard search.
+- Fixed ability to save over old theme.
+- Fixed display issue when marking an item at the bottom of the page when marked is set to "auto".
+- Fixed display issue where text input would wrap onto the next line.
+- Fixed buffer overflow when setting the owner column to only show Group and Author.
+
 * Wed Mar 13 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fixed occasional buffer overflow when accessing /dev.
 
