@@ -11,7 +11,7 @@
 %if 0%{?_release:1}
 %define         _rel      %{_release}
 %else
-%define         _rel      1
+%define         _rel      2
 %endif
 
 Name:           dfshow
@@ -41,7 +41,7 @@ The show application lets users view the names of files and directories on a dis
 ./bootstrap
 
 %build
-./configure --prefix=/usr --sysconfdir=/etc --datadir=/usr/share
+./configure --prefix=%{_prefix} --sysconfdir=%{_sysconfdir} --datadir=%{_datadir}
 make
 
 %install
@@ -53,12 +53,13 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%config(noreplace) /etc/dfshow.conf
+%config(noreplace) %{_sysconfdir}/dfshow.conf
 %attr(755, root, root) %{_bindir}/show
 %attr(755, root, root) %{_bindir}/sf
-%attr(644, root, root) /usr/share/man/man1/show.*
-%attr(644, root, root) /usr/share/man/man1/sf.*
-%attr(644, root, root) /usr/share/dfshow
+%attr(644, root, root) %{_mandir}/man1/show.*
+%attr(644, root, root) %{_mandir}/man1/sf.*
+%attr(755, root, root) %{_datadir}/dfshow
+%attr(644, root, root) %{_datadir}/dfshow/*
 
 %doc
 
@@ -67,7 +68,10 @@ rm -rf %{buildroot}
 - Addresses issue where copied files did not carry permissions over from the original
 - Minor documentation improvements
 
-* Wed Apr 19 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+* Tue Apr 23 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fixed directory permissions and used correct macros.
+
+* Fri Apr 19 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Added configuration menus in show and sf.
 - Added ability to set default theme.
 - Added the remainder of the color options to the color menu.
