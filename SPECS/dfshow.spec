@@ -1,17 +1,17 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.7.1
+%define         _verstr      0.8.0
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
 %else
-%define         _versfx      -alpha
+%define         _versfx      -beta
 %endif
 %if 0%{?_release:1}
 %define         _rel      %{_release}
 %else
-%define         _rel      2
+%define         _rel      1
 %endif
 
 Name:           dfshow
@@ -64,6 +64,14 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Wed Jun 19 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fixed issue where show would allow browsing into directories without execute permissions.
+- Fixed user getting locked into an error message when trying to specify an invalid user or group in show.
+- Fixed bug that would cause show to crash when selected "unsorted" file sorting from the configuration menu.
+- Switched indicator in color and configuration menus for universal display compatibility.
+- Improved memory footprint.
+- Beta status.
+
 * Tue May 14 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Addresses issue where copied files did not carry permissions over from the original
 - Minor documentation improvements
