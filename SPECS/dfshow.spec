@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.8.0
+%define         _verstr      0.8.1
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -64,6 +64,9 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Fri Aug 02 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Addresses the issue where sometimes sorting by size would not always work correctly.
+
 * Wed Jun 19 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fixed issue where show would allow browsing into directories without execute permissions.
 - Fixed user getting locked into an error message when trying to specify an invalid user or group in show.
