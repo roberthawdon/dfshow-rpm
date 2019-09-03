@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.8.1
+%define         _verstr      0.8.2
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -64,6 +64,10 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Tue Sep 03 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Addresses memory issue when using hunt function.
+- Defaults group input to be the value of owner.
+
 * Fri Aug 02 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Addresses the issue where sometimes sorting by size would not always work correctly.
 
