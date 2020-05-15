@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.8.2
+%define         _verstr      0.9.0
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -25,10 +25,14 @@ URL:            https://github.com/roberthawdon/dfshow
 Source:         https://github.com/roberthawdon/%{name}/archive/v%{version}%{_versfx}.tar.gz
 Requires:       libconfig
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-BuildRequires:  ncurses-devel libconfig-devel autoconf automake gcc
+BuildRequires:  ncurses-devel libconfig-devel libacl-devel autoconf automake gcc
 
 %if 0%{?mageia}
 BuildRequires:  libncursesw-devel
+%endif
+
+%if 0%{?rhel}%{?fedora}
+BuildRequires: libselinux-devel
 %endif
 
 %description
@@ -41,11 +45,23 @@ The show application lets users view the names of files and directories on a dis
 ./bootstrap
 
 %build
+%if 0%{?rhel}%{?fedora}
+./configure --prefix=%{_prefix} --sysconfdir=%{_sysconfdir} --datadir=%{_datadir} --with-selinux
+%else
 ./configure --prefix=%{_prefix} --sysconfdir=%{_sysconfdir} --datadir=%{_datadir}
+%endif
 make
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install PREFIX=%{_prefix}
+%{__install} -Dpm0644 -t %{buildroot}%{_datadir}/bash-completion/completions \
+  misc/auto-completion/bash/show-completion.bash
+%{__install} -Dpm0644 -t %{buildroot}%{_datadir}/bash-completion/completions \
+  misc/auto-completion/bash/sf-completion.bash
+%{__install} -Dpm0644 -t %{buildroot}%{_datadir}/zsh/site-functions \
+  misc/auto-completion/zsh/_show
+%{__install} -Dpm0644 -t %{buildroot}%{_datadir}/zsh/site-functions \
+  misc/auto-completion/zsh/_sf
 %__spec_install_post
 
 %clean
@@ -60,10 +76,29 @@ rm -rf %{buildroot}
 %attr(644, root, root) %{_mandir}/man1/sf.*
 %attr(755, root, root) %{_datadir}/dfshow
 %attr(644, root, root) %{_datadir}/dfshow/*
-
+%attr(644, root, root) %{_datadir}/bash-completion/completions/*
+%attr(755, root, root) %{_datadir}/zsh/site-functions
+%attr(644, root, root) %{_datadir}/zsh/site-functions/*
 %doc
 
 %changelog
+* Fri May 15 2020 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Added ACL & Extended Attribute indicators in show.
+- Added Extended Attribute view for macOS users using show with the -@ argument.
+- Added SELinux support. (requires --with-selinux to be passed at configuration time)
+- Added option to skip the selector to the first object if . and .. are at the top of the list.
+- Added experimental support for moving files between mount points. (requires --enable-move-between-devices to be passed to at configuration time)
+- Added a "Find Next" keybinding in sf.
+- Added Bash and Zsh auto-complete scripts.
+- Added -1 option to display only file names in show.
+- Added experimental option to change the ordering of columns in show, this is intentionally undocumented.
+- Added two new default themes.
+- Fixed issue where a symlink to a device would cause the wrong heading to be displayed in show.
+- Fixed issue where creating a directory or touching a file would add a trailing slash to the path in show.
+- Fixed issue where the -fno-common option would fail to compile.
+- Fixed issue where the remaining disk space my be reported incorrectly on some systems in show.
+- Various small bug fixes.
+
 * Tue Sep 03 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Addresses memory issue when using hunt function.
 - Defaults group input to be the value of owner.
