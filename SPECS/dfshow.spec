@@ -76,7 +76,10 @@ rm -rf %{buildroot}
 %attr(644, root, root) %{_mandir}/man1/sf.*
 %attr(755, root, root) %{_datadir}/dfshow
 %attr(644, root, root) %{_datadir}/dfshow/*
+%attr(755, root, root) %{_datadir}/bash-completion
+%attr(755, root, root) %{_datadir}/bash-completion/completions
 %attr(644, root, root) %{_datadir}/bash-completion/completions/*
+%attr(755, root, root) %{_datadir}/zsh
 %attr(755, root, root) %{_datadir}/zsh/site-functions
 %attr(644, root, root) %{_datadir}/zsh/site-functions/*
 %doc
@@ -139,7 +142,7 @@ rm -rf %{buildroot}
 - Adds ability to use Home and End keys on text inputs.
 - Adds mitigation for Google Drive Stream crashing show on macOS.
 
-* Sun Mar 02 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
+* Sat Mar 02 2019 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Added ability to create parent directories if they don't exist.
 - Added ability to delete empty directories.
 - Fixed bug where show would crash if returning from shell to a deleted directory.
