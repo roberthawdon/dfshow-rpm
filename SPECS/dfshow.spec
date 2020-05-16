@@ -41,7 +41,7 @@ DF-SHOW (Directory File Show) is a Unix-like rewrite of some of the applications
 The show application lets users view the names of files and directories on a disk with information about the files. Files can be copied, moved, viewed, and edited (in your system's default editor). The application is run using the show command. The output is similar to the ls command. A file view is also included which can be invoked using the sf command.
 
 %prep
-%setup -n %{name}-%{version}%{_versfx}
+%autosetup -p1 -n %{name}-%{version}%{_versfx}
 ./bootstrap
 
 %build
@@ -54,6 +54,8 @@ make
 
 %install
 %make_install PREFIX=%{_prefix}
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
+mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %{__install} -Dpm0644 -t %{buildroot}%{_datadir}/bash-completion/completions \
   misc/auto-completion/bash/show-completion.bash
 %{__install} -Dpm0644 -t %{buildroot}%{_datadir}/bash-completion/completions \
@@ -64,9 +66,6 @@ make
   misc/auto-completion/zsh/_sf
 %__spec_install_post
 
-%clean
-rm -rf %{buildroot}
-
 %files
 %defattr(-,root,root,-)
 %config(noreplace) %{_sysconfdir}/dfshow.conf
@@ -76,11 +75,10 @@ rm -rf %{buildroot}
 %attr(644, root, root) %{_mandir}/man1/sf.*
 %attr(755, root, root) %{_datadir}/dfshow
 %attr(644, root, root) %{_datadir}/dfshow/*
-%attr(755, root, root) %{_datadir}/bash-completion
-%attr(755, root, root) %{_datadir}/bash-completion/completions
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
 %attr(644, root, root) %{_datadir}/bash-completion/completions/*
-%attr(755, root, root) %{_datadir}/zsh
-%attr(755, root, root) %{_datadir}/zsh/site-functions
+%dir %{_datadir}/zsh/site-functions
 %attr(644, root, root) %{_datadir}/zsh/site-functions/*
 %doc
 
