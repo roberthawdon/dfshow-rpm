@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.9.0
+%define         _verstr      0.9.1
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -83,6 +83,11 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Sat Aug 08 2020 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fixes issue where F12 would quit show.
+- Fixes issue where hiding dot files whilst running show may cause a black screen.
+- Fixes issue where the display width was not reset between directories leading to horizontal scrolling.
+
 * Fri May 15 2020 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Added ACL & Extended Attribute indicators in show.
 - Added Extended Attribute view for macOS users using show with the -@ argument.
