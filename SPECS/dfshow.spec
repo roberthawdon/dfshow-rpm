@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.9.1
+%define         _verstr      0.9.2
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -83,6 +83,16 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Wed Nov 17 2021 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Added -d option to display only directories
+- Fixed issue where the interactive portions of the applications were pipeable
+- Added -s and --block-size= options
+- Fixed printing of menu backgrounds to reach the edge of the screen in themes
+- Added ability to set editor and pager in the settings
+- Rewrote routine for launching editor and pager
+- New theme
+- Small bug fixes
+
 * Sat Aug 08 2020 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fixes issue where F12 would quit show.
 - Fixes issue where hiding dot files whilst running show may cause a black screen.
