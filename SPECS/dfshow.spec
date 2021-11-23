@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.9.2
+%define         _verstr      0.9.3
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -83,6 +83,9 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Tue Nov 23 2021 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fixes issue where editor and pager doesn't launch on some systems
+
 * Wed Nov 17 2021 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Added -d option to display only directories
 - Fixed issue where the interactive portions of the applications were pipeable
