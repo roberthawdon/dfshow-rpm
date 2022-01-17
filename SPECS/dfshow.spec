@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.9.3
+%define         _verstr      0.9.4
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -83,6 +83,12 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Mon Jan 17 2022 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fixes bug which prevents show launching editor or pager set by ENV values
+- Corrects documentation for defining pager and editor
+- Fixes issue on MacOS where memory is incorrectly allocated when using find functions (find in sf and hunt in show)
+- General bug fixes and code optimisation
+
 * Tue Nov 23 2021 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fixes issue where editor and pager doesn't launch on some systems
 
