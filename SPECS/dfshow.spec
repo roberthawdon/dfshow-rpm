@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.9.4
+%define         _verstr      0.9.5
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -83,6 +83,10 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Sat Feb 12 2022 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fixes issue where opening a file with single quotes may crash Show
+- Fixes issue where parent directories aren't being created correctly, which would also prevent user configuration being saved
+
 * Mon Jan 17 2022 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fixes bug which prevents show launching editor or pager set by ENV values
 - Corrects documentation for defining pager and editor
