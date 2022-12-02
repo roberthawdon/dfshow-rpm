@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.9.6
+%define         _verstr      0.9.7
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -83,6 +83,9 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Fri Dec 02 2022 Robert Ian Hawdon robert@hawdon.net
+- Fixes issue where creating a relative symlink may cause show to crash
+
 * Mon May 02 2022 Robert Ian Hawdon robert@hawdon.net
 - Fixes issue where a trailing slash would be added to the pwd when aborting the Make Directory or Touch File prompt
 - Fixes issue where parent directories would still fail to create on some systems
