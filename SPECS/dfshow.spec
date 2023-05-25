@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.9.7
+%define         _verstr      0.10.0
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -25,7 +25,7 @@ URL:            https://github.com/roberthawdon/dfshow
 Source:         https://github.com/roberthawdon/%{name}/archive/v%{version}%{_versfx}.tar.gz
 Requires:       libconfig
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-BuildRequires:  ncurses-devel libconfig-devel libacl-devel autoconf automake gcc
+BuildRequires:  ncurses-devel libconfig-devel libacl-devel autoconf automake gcc gettext
 
 %if 0%{?mageia}
 BuildRequires:  libncursesw-devel
@@ -54,6 +54,7 @@ make
 
 %install
 %make_install PREFIX=%{_prefix}
+%find_lang %{name}
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
 mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %{__install} -Dpm0644 -t %{buildroot}%{_datadir}/bash-completion/completions \
@@ -66,7 +67,7 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
   misc/auto-completion/zsh/_sf
 %__spec_install_post
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root,-)
 %config(noreplace) %{_sysconfdir}/dfshow.conf
 %attr(755, root, root) %{_bindir}/show
@@ -83,6 +84,19 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Thu May 25 2023 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Added support for internationalization
+- Added British English localization
+- Added support for updating SELinux context
+- Added option to show Owner and Group as ID numbers
+- Made SF part of Show (whilst a standalone SF still exists)
+- Added option to show inode
+- Fixes issue where bottom function menu would disappear when the terminal was resized
+- Fixes issue where some international characters would cause the screen to not completely clear when navigating between directories
+- Fixes issue were the theme editor (colors) would blank and redraw the entire screen when navigating up and down
+- Fixed some warnings that would appear at build time
+- Memory optimizations
+
 * Fri Dec 02 2022 Robert Ian Hawdon robert@hawdon.net
 - Fixes issue where creating a relative symlink may cause show to crash
 
