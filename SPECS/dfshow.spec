@@ -25,7 +25,7 @@ URL:            https://github.com/roberthawdon/dfshow
 Source:         https://github.com/roberthawdon/%{name}/archive/v%{version}%{_versfx}.tar.gz
 Requires:       libconfig
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-BuildRequires:  ncurses-devel libconfig-devel libacl-devel autoconf automake gcc gettext
+BuildRequires:  ncurses-devel libconfig-devel libacl-devel autoconf automake gcc gettext-devel
 
 %if 0%{?mageia}
 BuildRequires:  libncursesw-devel
