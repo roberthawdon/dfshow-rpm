@@ -11,7 +11,7 @@
 %if 0%{?_release:1}
 %define         _rel      %{_release}
 %else
-%define         _rel      6
+%define         _rel      7
 %endif
 
 Name:           dfshow
@@ -27,7 +27,7 @@ Requires:       libconfig
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:  ncurses-devel libconfig-devel libacl-devel autoconf automake gcc gettext-devel
 
-%if 0%{?el} == 6
+%if 0%{?rhel} == 6
 Patch0:         dfshow-legacy-gettext.patch
 %endif
 
