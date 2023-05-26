@@ -11,7 +11,7 @@
 %if 0%{?_release:1}
 %define         _rel      %{_release}
 %else
-%define         _rel      4
+%define         _rel      5
 %endif
 
 Name:           dfshow
@@ -23,10 +23,13 @@ Group:          Utilities
 License:        GPLv3
 URL:            https://github.com/roberthawdon/dfshow
 Source:         https://github.com/roberthawdon/%{name}/archive/v%{version}%{_versfx}.tar.gz
-Patch0:         dfshow-legacy-gettext.patch
 Requires:       libconfig
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:  ncurses-devel libconfig-devel libacl-devel autoconf automake gcc gettext-devel
+
+%if 0%{?el} == 6
+Patch0:         dfshow-legacy-gettext.patch
+%endif
 
 %if 0%{?mageia}
 BuildRequires:  libncursesw-devel
@@ -43,7 +46,7 @@ The show application lets users view the names of files and directories on a dis
 
 %prep
 %setup -n %{name}-%{version}%{_versfx}
-%if 0%{?el} <= 6
+%if 0%{?el} == 6
 %patch0 -p1
 %endif
 ./bootstrap
