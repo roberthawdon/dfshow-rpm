@@ -11,7 +11,7 @@
 %if 0%{?_release:1}
 %define         _rel      %{_release}
 %else
-%define         _rel      5
+%define         _rel      6
 %endif
 
 Name:           dfshow
@@ -45,10 +45,7 @@ DF-SHOW (Directory File Show) is a Unix-like rewrite of some of the applications
 The show application lets users view the names of files and directories on a disk with information about the files. Files can be copied, moved, viewed, and edited (in your system's default editor). The application is run using the show command. The output is similar to the ls command. A file view is also included which can be invoked using the sf command.
 
 %prep
-%setup -n %{name}-%{version}%{_versfx}
-%if 0%{?el} == 6
-%patch0 -p1
-%endif
+%autosetup -p1 -n %{name}-%{version}%{_versfx}
 ./bootstrap
 
 %build
