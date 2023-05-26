@@ -1,0 +1,14 @@
+diff --git a/configure.ac b/configure.ac
+index 0137e87..fadedbd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,8 +5,7 @@ AC_CONFIG_HEADERS([config.h:config.hin])
+ AC_SUBST([AM_LDFLAGS])
+ 
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION(0.17.18)
+-AM_GNU_GETTEXT_REQUIRE_VERSION(0.17.18)
++AM_GNU_GETTEXT_VERSION(0.17)
+ 
+ # Check for ACL_TYPE_NFS4
+ AC_CHECK_DECL([ACL_TYPE_NFS4],
