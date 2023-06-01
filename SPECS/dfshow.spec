@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.10.0
+%define         _verstr      0.10.1
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -11,7 +11,7 @@
 %if 0%{?_release:1}
 %define         _rel      %{_release}
 %else
-%define         _rel      8
+%define         _rel      1
 %endif
 
 Name:           dfshow
@@ -91,6 +91,11 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Thu Jun 01 2023 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fixes rare display bug when hiding and unhiding files (mainly affected macOS, but could occur on any system)
+- Corrected minor spelling and display issue in documentation
+- Small code cleanup
+
 * Thu May 25 2023 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Added support for internationalization
 - Added British English localization
