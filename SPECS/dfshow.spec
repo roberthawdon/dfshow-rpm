@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.10.1
+%define         _verstr      0.10.2
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -91,6 +91,15 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Thu Mar 14 2024 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Reworked window resize code
+- Fixed window resizing in sf standalone
+- Fixed issue where resizing a window would make some menus incorrect
+- Fixed issue where resizing when viewing a file in show would incorrectly print the last view in show
+- Fixed issue where resizing in both "colors" and settings menu would incorrectly print the last view in show
+- Fixed issue where temporary settings would be reset when opening setting menu
+- Corrected documentation
+
 * Thu Jun 01 2023 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Fixes rare display bug when hiding and unhiding files (mainly affected macOS, but could occur on any system)
 - Corrected minor spelling and display issue in documentation
