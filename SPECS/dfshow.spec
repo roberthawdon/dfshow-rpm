@@ -26,10 +26,7 @@ Source:         https://github.com/roberthawdon/%{name}/archive/v%{version}%{_ve
 Requires:       libconfig
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:  ncurses-devel libconfig-devel libacl-devel autoconf automake gcc gettext-devel
-
-%if 0%{?rhel} == 6
 Patch0:         dfshow-legacy-gettext.patch
-%endif
 
 %if 0%{?mageia}
 BuildRequires:  libncursesw-devel
