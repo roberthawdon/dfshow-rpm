@@ -1,7 +1,7 @@
 %if 0%{?_version:1}
 %define         _verstr      %{_version}
 %else
-%define         _verstr      0.10.2
+%define         _verstr      0.10.3
 %endif
 %if 0%{?_versionsuffix:1}
 %define         _versfx      %{_versionsuffix}
@@ -91,6 +91,10 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %doc
 
 %changelog
+* Fri Mar 15 2024 Robert Ian Hawdon git@robertianhawdon.me.uk
+- Fix buffer overflow errors with FORTIFY_SOURCE=3
+- Fix screen redraw issue when returning from external command
+
 * Thu Mar 14 2024 Robert Ian Hawdon git@robertianhawdon.me.uk
 - Reworked window resize code
 - Fixed window resizing in sf standalone
